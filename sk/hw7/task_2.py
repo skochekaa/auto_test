@@ -5,6 +5,3 @@ for key, value in words.items():
     for i in range(value):
         my_word += key
     print(my_word)
-
-
-
