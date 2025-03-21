@@ -29,6 +29,9 @@ jobs:
         run: flake8 . --count --max-line-length=79 --show-source --statistics
 
       - name: Run PEP20 check
-        run: |  
-          echo "Checking PEP20..."  
-          python -c "import this" | diff - <(echo 'The Zen of Python, by Tim Peters'; cat) || (echo 'PEP20 philosophy mismatch detected!' && exit 1)ngth: "120"
+        run: |
+          echo "Checking PEP20..."
+          python -c "import this" > zen_of_python.txt
+          echo 'The Zen of Python, by Tim Peters' > expected_zen.txt
+          cat zen_of_python.txt >> expected_zen.txt
+          diff zen_of_python.txt expected_zen.txt || (echo 'PEP20 philosophy mismatch detected!' && exit 1)
