@@ -31,7 +31,7 @@ jobs:
       - name: Run PEP20 check
         run: |
           echo "Checking PEP20..."
-          python -c "import this" > zen_of_python.txt
+          python -c "import this" | tail -n +2 > zen_of_python.txt
           echo 'The Zen of Python, by Tim Peters' > expected_zen.txt
           cat zen_of_python.txt >> expected_zen.txt
           diff zen_of_python.txt expected_zen.txt || (echo 'PEP20 philosophy mismatch detected!' && exit 1)
