@@ -3,6 +3,7 @@ text = (
     "Integer urna nisl, facilisis vitae semper at, dignissim vitae libero"
 )
 
+
 my_list = text.split()
 final_list = []
 add_cancel = "ing"
