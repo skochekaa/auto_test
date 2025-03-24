@@ -1,4 +1,5 @@
 def fibonachi():
+    """Генерирует бесконечную последовательность чисел Фибоначи"""
     num_list = [0, 1]
     while True:
         sum_list = sum(num_list)
