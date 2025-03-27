@@ -11,10 +11,12 @@ class Book:
 
     def print_info(self):
         if self.reserve:
-            print(f"Название: {self.name_book}, автор: {self.autor}, количество страниц: {self.count_pages}, "
+            print(f"Название: {self.name_book}, автор: {self.autor}, "
+                  f"количество страниц: {self.count_pages}, "
                   f"материал: {self.material}, зарезервирована")
         else:
-            print(f"Название: {self.name_book}, автор: {self.autor}, количество страниц: {self.count_pages}, "
+            print(f"Название: {self.name_book}, автор: {self.autor}, "
+                  f"количество страниц: {self.count_pages}, "
                   f"материал: {self.material}")
 
 
@@ -27,10 +29,13 @@ class SchoolBook(Book):
 
     def print_info(self):
         if self.reserve:
-            print(f"Название: {self.name_book}, автор: {self.autor}, количество страниц: {self.count_pages}, "
-                  f"предмет: {self.discipline}, класс: {self.level}, зарезервирована")
+            print(f"Название: {self.name_book}, автор: {self.autor}, "
+                  f"количество страниц: {self.count_pages}, "
+                  f"предмет: {self.discipline}, "
+                  f"класс: {self.level}, зарезервирована")
         else:
-            print(f"Название: {self.name_book}, автор: {self.autor}, количество страниц: {self.count_pages}, "
+            print(f"Название: {self.name_book}, "
+                  f"автор: {self.autor}, количество страниц: {self.count_pages}, "
                   f"предмет: {self.discipline}, класс: {self.level}")
 
 
