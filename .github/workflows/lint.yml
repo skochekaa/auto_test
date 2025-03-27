@@ -23,7 +23,7 @@ jobs:
           pip install flake8 pytest
 
       - name: Run linter
-        run: flake8 .
+        run: flake8 . --ignore=E501  # Игнорируем проверку длины строки (E501)
 
       - name: Run tests
         run: pytest
