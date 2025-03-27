@@ -1,6 +1,7 @@
 name: Code Check
 
 on:
+
   push:
     branches:
       - main
