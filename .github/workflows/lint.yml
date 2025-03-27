@@ -1,29 +1,29 @@
-name: Check PEP8 and PEP20
+name: Code Check
 
 on:
-  push:
-    branches: [ main, develop ]  # Запуск на пушах в эти ветки
   pull_request:
-    branches: [ main, develop ]  # Запуск на PR в эти ветки
+    branches:
+      - main
 
 jobs:
-  lint:
-    name: Linting with flake8 and PEP20 check
+  lint-and-test:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v4
+      - name: Checkout code
+        uses: actions/checkout@v3
 
       - name: Set up Python
-        uses: actions/setup-python@v4
+        uses: actions/setup-python@v3
         with:
-          python-version: '3.9'  # Можно изменить версию
+          python-version: '3.9'
 
       - name: Install dependencies
-        run: |  
-          python -m pip install --upgrade pip  
-          pip install flake8 pycodestyle_magic  
+        run: |
+          pip install flake8 pytest
 
-      - name: Run PEP8 check with flake8
-        run: flake8 . --count --max-line-length=79 --show-source --statistics
+      - name: Run linter
+        run: flake8 .
+
+      - name: Run tests
+        run: pytest
