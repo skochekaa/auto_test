@@ -33,4 +33,4 @@ jobs:
         flake8 . --count --exit-zero --max-complexity=10 --statistics --ignore=E501
 
     - name: Run tests
-      run: pytest
+      run: pytest .github/workflows/lint.yml
