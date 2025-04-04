@@ -38,7 +38,6 @@ class Bunch:
         elif order_by == "Цена":
             return sorted([value.price for value in self.list_flowers])
 
-
     # Реализовать поиск цветов в букете по каким-нибудь параметрам
     # (например, по среднему времени жизни) (и это тоже метод).
     def search(self, life_time: int):
