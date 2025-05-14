@@ -18,7 +18,7 @@ def insert_student(name: str, second_name: str):
     """
     Принимает на вход имя и фамилию, добавляет запись в таблицу students
     """
-    query = ''' 
+    query = '''
         INSERT INTO students (name, second_name)
         VAlUES (%s, %s);
     '''
@@ -29,7 +29,7 @@ def insert_student(name: str, second_name: str):
 def insert_books(title: str, student_id: int):
     query = """
         INSERT INTO books(
-            title, 
+            title,
             taken_by_student_id
         )
         VALUES (%s, %s);
@@ -97,12 +97,12 @@ def insert_marks(score: str, lesson: str, name: str, second_name: str):
     query = """
         INSERT INTO marks (`value`, lesson_id, student_id)
         VALUES (
-            %s, 
+            %s,
             (
                 SELECT MAX(id)
                 FROM lessons
                 WHERE title = %s
-            ), 
+            ),
             (
                 SELECT MAX(id)
                 FROM students
@@ -120,7 +120,7 @@ def select_books_student(name: str, second_name: str):
         SELECT title
         FROM books
         WHERE taken_by_student_id = (
-            SELECT MIN(id) 
+            SELECT MIN(id)
             FROM students
             WHERE name = %s AND second_name = %s
         )
