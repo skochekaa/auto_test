@@ -16,7 +16,8 @@ values ('Practical shooting', '2020-01-01', '2020-06-01');
 -- Обновляем запись студента, добавляем отношение к группе
 update students
 set group_id = (
-  select id from `groups`
+  select id
+  from `groups`
   where title = 'Practical shooting'
 )
 where name = 'John' and second_name = 'Wick'
