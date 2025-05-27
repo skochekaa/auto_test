@@ -40,7 +40,7 @@ def search_student(name: str, second_name: str) -> bool:
 
 def match_search(data_dict: dict):
     query = """
-        SELECT 
+        SELECT
             students.name,
             students.second_name,
             `groups`.title AS group_title,
