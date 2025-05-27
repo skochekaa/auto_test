@@ -1,15 +1,16 @@
 import mysql.connector as mysql
+import os
+from dotenv import load_dotenv
+
+load_dotenv()
 
 db = mysql.connect(
-    user="root",
-    passwd="",
-    host="localhost",
-    port="3306",
-    database="hw14"
+    user=os.getenv("DB_USER"),
+    passwd=os.getenv("DB_PASSW"),
+    host=os.getenv("DB_HOST"),
+    port=os.getenv("DB_PORT"),
+    database=os.getenv("DB_NAME")
 )
-
-if db.is_connected():
-    print("Успешно")
 
 cursor = db.cursor(dictionary=True)
 
@@ -134,11 +135,11 @@ def select_all_info_student(name: str, second_name: str):
     query = """
         SELECT *
         FROM students
-        JOIN books ON students.id = books.taken_by_student_id
-        JOIN `groups` ON students.group_id = `groups`.id
-        JOIN marks ON students.id = marks.student_id
-        JOIN lessons ON marks.lesson_id = lessons.id
-        JOIN subjets ON lessons.subject_id = subjets.id
+        LEFT JOIN books ON students.id = books.taken_by_student_id
+        LEFT JOIN `groups` ON students.group_id = `groups`.id
+        LEFT JOIN marks ON students.id = marks.student_id
+        LEFT JOIN lessons ON marks.lesson_id = lessons.id
+        LEFT JOIN subjets ON lessons.subject_id = subjets.id
         WHERE name = %s AND second_name = %s
     """
     cursor.execute(query, (name, second_name))
