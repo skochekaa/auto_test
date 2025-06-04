@@ -10,24 +10,33 @@ parser.add_argument("path", help="File path")
 parser.add_argument("search_data", type=str, help="Text for search")
 args = parser.parse_args()
 
-file_path = args.path
-search_key = args.search_data
 
-with open(file_path) as log:
-    data = log.read()
-    print(data)
-
-
-# Находить строки, в которых встречается тот текст, который пользователь попросил найти
-
-
-
-
+def open_file(path: str):
+    """
+    Принимает на вход путь к файлу с логами, открывает и читает построчно.
+    :param path: Путь к файлу с логами
+    :return: Список строк из логов и название прочитанного файла
+    """
+    with open(path, "r") as log:
+        data = log.readlines()
+        log_name = path.split("/")[3]
+        return data, log_name
 
 
+def search_in_log(data: list, log_name: str, key: str):
+    for line in data:
+        if key in line:
+            print(f"Имя файла: {log_name}")
+            print(f"Номер строки c ошибкой: {data.index(line) + 1}")
+            error_line = line.split()
+            index_key = error_line.index(key)
+            start = max(0, index_key - 5)
+            end = index_key + 6
+            message_error = " ".join(error_line[start:end])
+            print(f"Часть строки: {message_error}\n")
 
-# - выводить на экран результат своей работы в котором будет казано название файла, где найден текст и порядковый
-# номер строки файла, в которой был найден текст
 
-# - выводить на экран кусок той строки, в которой был найден текст
-
+# Открываем каждый файл в папке и выполняем нужные действия
+for file_name in os.listdir(args.path):
+    file_path = os.path.join(args.path, file_name)
+    search_in_log(*open_file(file_path), args.search_data)
