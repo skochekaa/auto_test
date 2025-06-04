@@ -22,7 +22,7 @@ build/
 # Виртуальные окружения
 .env
 .venv/
-venv/
+venv1/
 ENV/
 env/
 *.env
