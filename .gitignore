@@ -1,0 +1,32 @@
+# macOS системные файлы
+.DS_Store
+.AppleDouble
+.LSOverride
+.Spotlight-V100
+.Trashes
+Icon?
+._*
+
+# PyCharm / JetBrains
+.idea/
+
+# Python
+__pycache__/
+*.py[cod]
+*.so
+*.egg
+*.egg-info/
+dist/
+build/
+
+# Виртуальные окружения
+.env
+.venv/
+venv1/
+ENV/
+env/
+*.env
+
+# Логи и временные файлы
+*.log
+*.tmp
