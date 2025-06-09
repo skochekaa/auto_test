@@ -27,6 +27,10 @@ ENV/
 env/
 *.env
 
+# Отчеты о тестировании
+allure-results/
+allure-report/
+
 # Логи и временные файлы
 *.log
 *.tmp

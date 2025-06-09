@@ -22,22 +22,27 @@ def test_get_one_objects(status_test, new_test_post):
 
 
 @allure.feature("POST-запрос")
+@allure.title("Создание нового объекта")
 @pytest.mark.parametrize("name", ["Angela", "Lex", "Bob"])
 def test_post_new_object(status_test, name):
     """
     Добавляет новый объект
     """
-    json = {
-        "data": {
-            "color": "black",
-            "size": "M"
-        },
-        "name": name
-    }
-    response = requests.post("http://167.172.172.115:52353/object", json=json)
-    print(response.json()["name"])
-    assert response.json()["name"] == name, "Объект не создан"
-    assert response.status_code == 200, "Status code incorrect"
+    with allure.step("Создание данных"):
+        json = {
+            "data": {
+                "color": "black",
+                "size": "M"
+            },
+            "name": name
+        }
+    with allure.step("Отправка запроса"):
+        response = requests.post("http://167.172.172.115:52353/object", json=json)
+        print(response.json()["name"])
+    with allure.step("Сравнение полученного имени"):
+        assert response.json()["name"] == name, "Объект не создан"
+    with allure.step("Сравнение полученного кода c 200"):
+        assert response.status_code == 200, "Status code incorrect"
 
 
 @allure.feature("PUT-запрос")
