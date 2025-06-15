@@ -22,4 +22,3 @@ class Endpoint:
     @allure.step("Удаление тестовых данных")
     def delete_self_object(self):
         requests.delete(f"{self.url}/{self.response.json()['id']}")
-
