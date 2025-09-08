@@ -69,3 +69,12 @@ def test_select_language(driver):
     button.click()
     output = driver.find_element(By.XPATH, "//p[text()='You selected']/following-sibling::p")
     assert input_language == output.text
+
+
+def test_text_wait(driver):
+    driver.implicitly_wait(5)
+    driver.get("https://the-internet.herokuapp.com/dynamic_loading/2")
+    button_start = driver.find_element(By.XPATH, "//button[text()='Start']")
+    button_start.click()
+    result = driver.find_element(By.XPATH, "//div[@id='finish']/h4")
+    assert result.text == "Hello World!"
