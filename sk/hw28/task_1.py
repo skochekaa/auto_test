@@ -1,4 +1,4 @@
-from playwright.sync_api import Page, expect
+from playwright.sync_api import Page
 
 
 def test_login_fom(page: Page):
@@ -26,5 +26,3 @@ def test_fill_form(page: Page):
     page.locator("//*[@id='state']/div[1]").click()
     page.locator("//div[text()='NCR']").click()
     page.locator("#submit").click()
-
-
